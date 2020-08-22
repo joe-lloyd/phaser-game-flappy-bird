@@ -11,6 +11,7 @@ class FlappyGame extends Scene {
     }
 
     create(data) {
+        this.add.image(400, 300, 'sky');
 
     }
 
