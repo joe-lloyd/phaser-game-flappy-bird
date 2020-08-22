@@ -1,0 +1,9 @@
+{
+  "name": "flappy-bird-phaser",
+  "scripts": {
+    "dev": "parcel watch index.html"
+  },
+  "dependencies": {
+    "phaser": "^3.24.1"
+  }
+}
