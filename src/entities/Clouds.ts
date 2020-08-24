@@ -4,19 +4,35 @@ import cloudAsset from "../assets/cloud.png";
 class Clouds extends Phaser.Physics.Arcade.Group {
     constructor(world, scene) {
         super(world, scene);
+        this.scene = scene;
+        this.defaults.setAllowGravity = false;
+        this.defaults.setVelocityX = -10;
         const cloudPositions = [[150, 150], [250, 50], [350, 75]]
         cloudPositions.forEach(([x, y]) => {
             const cloud = new Cloud(scene, x, y);
             this.add(cloud, true)
         });
-        return this;
+    }
+
+    update() {
+        this.children.entries.forEach((cloud: Cloud) => {
+            if(cloud.body.position.x < -cloud.width) {
+                cloud.reset();
+            }
+        })
     }
 }
 
 class Cloud extends Phaser.Physics.Arcade.Sprite {
-    constructor(scene, x, y) {
+    constructor(scene: Phaser.Scene, x: number, y: number) {
         super(scene, x, y, 'cloud');
-        this.setGravityY(0);
+        this.scene = scene;
+    }
+
+    reset() {
+        console.log(this.scene.scale.width)
+        this.body.x = this.scene.scale.width
+        this.body.y = Phaser.Math.Between(0, this.scene.scale.height - this.height);
         return this;
     }
 
