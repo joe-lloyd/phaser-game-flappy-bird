@@ -7,7 +7,7 @@ class Clouds extends Phaser.Physics.Arcade.Group {
         this.scene = scene;
         this.defaults.setAllowGravity = false;
         this.defaults.setVelocityX = -10;
-        const cloudPositions = [[150, 150], [250, 50], [350, 75]]
+        const cloudPositions = [[80, 150], [350, 50], [650, 75]]
         cloudPositions.forEach(([x, y]) => {
             const cloud = new Cloud(scene, x, y);
             this.add(cloud, true)
@@ -30,7 +30,6 @@ class Cloud extends Phaser.Physics.Arcade.Sprite {
     }
 
     reset() {
-        console.log(this.scene.scale.width)
         this.body.x = this.scene.scale.width
         this.body.y = Phaser.Math.Between(0, this.scene.scale.height - this.height);
         return this;
