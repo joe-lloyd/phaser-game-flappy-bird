@@ -9,10 +9,12 @@ const config = {
         default: 'arcade',
         arcade: {
             gravity: { y: 200 },
-            debug: true,
+            debug: process.env.DEBUGMODE === 'true',
         }
     },
     scene: [FlappyGame]
 };
+
+console.log(process.env.DEBUGMODE);
 
 const game = new Phaser.Game(config);
