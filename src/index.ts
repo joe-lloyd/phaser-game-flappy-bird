@@ -1,4 +1,5 @@
 import * as Phaser from 'phaser';
+import GesturesPlugin from 'phaser3-rex-plugins/plugins/gestures-plugin.js';
 import FlappyGame from './scenes/FlappyGame';
 
 const config = {
@@ -11,6 +12,13 @@ const config = {
             gravity: { y: 200 },
             debug: process.env.DEBUGMODE === 'true',
         }
+    },
+    plugins: {
+        scene: [{
+            key: 'rexGestures',
+            plugin: GesturesPlugin,
+            mapping: 'rexGestures'
+        }],
     },
     scene: [FlappyGame]
 };

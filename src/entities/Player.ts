@@ -1,4 +1,5 @@
 import * as Phaser from "phaser";
+import { Tap } from 'phaser3-rex-plugins/plugins/gestures.js';
 import playerAsset from '../assets/orb.png';
 
 class Player extends Phaser.Physics.Arcade.Sprite {
@@ -32,7 +33,7 @@ class Player extends Phaser.Physics.Arcade.Sprite {
     this.setCollideWorldBounds(true);
     this.canJump = true;
     this.spaceKey = this.scene.input.keyboard.addKey('SPACE');
-    this.pointer = this.scene.input.activePointer;
+    this.pointer = this.scene.rexGestures.add.tap({});
   }
 
   /**
@@ -40,10 +41,10 @@ class Player extends Phaser.Physics.Arcade.Sprite {
    * Makes sure a user cant just hold it down to fly up.
    */
   checkJump() {
-    if (this.canJump && (this.spaceKey.isDown || this.pointer.isDown)) {
+    if (this.canJump && (this.spaceKey.isDown || this.pointer.isTapped)) {
       this.setVelocityY(-120);
       this.canJump = false;
-    } else if (this.spaceKey.isUp && !this.pointer.isDown) {
+    } else if (this.spaceKey.isUp && !this.pointer.isTapped) {
       this.canJump = true;
     }
   }
@@ -62,7 +63,7 @@ class Player extends Phaser.Physics.Arcade.Sprite {
    */
   setFacing() {
     const angle = this.angle + this.body.velocity.y * 0.01
-    this.angle = Phaser.Math.Clamp(angle, -90, 90);
+    this.angle = Phaser.Math.Clamp(angle, -60, 60);
   }
 }
 
