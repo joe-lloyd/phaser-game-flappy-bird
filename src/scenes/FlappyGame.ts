@@ -30,8 +30,8 @@ class FlappyGame extends Scene {
     update(time: number, delta: number) {
         super.update(time, delta);
         this.clouds.update();
-        this.pipes.update();
-        this.player.update()
+        this.pipes.update(this.player);
+        this.player.update(this.pipes)
     }
 }
 
