@@ -4,6 +4,7 @@ import playerAsset from '../assets/orb.png';
 class Player extends Phaser.Physics.Arcade.Sprite {
   private canJump: boolean;
   private spaceKey: Phaser.Input.Keyboard.Key;
+  private pointer: Phaser.Input.Pointer;
 
   constructor(scene: Phaser.Scene, x: number, y: number) {
     super(scene, x, y, 'player');
@@ -31,6 +32,7 @@ class Player extends Phaser.Physics.Arcade.Sprite {
     this.setCollideWorldBounds(true);
     this.canJump = true;
     this.spaceKey = this.scene.input.keyboard.addKey('SPACE');
+    this.pointer = this.scene.input.activePointer;
   }
 
   /**
@@ -38,10 +40,10 @@ class Player extends Phaser.Physics.Arcade.Sprite {
    * Makes sure a user cant just hold it down to fly up.
    */
   checkJump() {
-    if (this.canJump && this.spaceKey.isDown) {
-        this.setVelocityY(-120);
-        this.canJump = false;
-    } else if (this.spaceKey.isUp) {
+    if (this.canJump && (this.spaceKey.isDown || this.pointer.isDown)) {
+      this.setVelocityY(-120);
+      this.canJump = false;
+    } else if (this.spaceKey.isUp && !this.pointer.isDown) {
       this.canJump = true;
     }
   }
