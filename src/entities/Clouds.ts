@@ -4,7 +4,6 @@ import cloudAsset from "../assets/cloud.png";
 class Clouds extends Phaser.Physics.Arcade.Group {
     constructor(world, scene) {
         super(world, scene);
-        this.scene = scene;
         this.defaults.setAllowGravity = false;
         this.defaults.setVelocityX = -10;
         const cloudPositions = [[80, 150], [350, 50], [650, 75]]

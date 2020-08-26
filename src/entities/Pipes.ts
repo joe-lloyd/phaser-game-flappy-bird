@@ -34,7 +34,6 @@ class Pipe extends Phaser.Physics.Arcade.Sprite {
         super(scene, x, y, pipeType);
         this.scene = scene;
         this.pipeType = pipeType;
-        console.log(this.height)
     }
 
     reset() {
