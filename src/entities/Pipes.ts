@@ -46,6 +46,8 @@ class Pipe extends Phaser.Physics.Arcade.Sprite {
 
     reset() {
         this.body.x = this.scene.scale.width
+        this.scene.score += 0.5;
+        this.scene.scoreText.setText(`SCORE: ${this.scene.score}`)
         if (this.pipeType === 'pipe-up') {
             this.body.y = Phaser.Math.Between(this.scene.scale.height - this.body.height * 0.4, this.scene.scale.height - this.body.height * 0.9);
         } else {
