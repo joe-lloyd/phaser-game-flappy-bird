@@ -1,12 +1,14 @@
 {
   "name": "flappy-bird-phaser",
   "scripts": {
-    "dev": "parcel index.html"
+    "dev": "parcel index.html",
+    "build": "parcel build index.html"
   },
   "dependencies": {
     "phaser": "^3.24.1"
   },
   "devDependencies": {
+    "parcel-bundler": "^1.12.4",
     "typescript": "^4.0.2"
   }
 }
