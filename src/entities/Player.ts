@@ -44,7 +44,7 @@ class Player extends Phaser.Physics.Arcade.Sprite {
     if (this.canJump && (this.spaceKey.isDown || this.pointer.isTapped)) {
       this.setVelocityY(-120);
       this.canJump = false;
-    } else if (this.spaceKey.isUp && !this.pointer.isTapped) {
+    } else if (this.spaceKey.isUp) {
       this.canJump = true;
     }
   }
