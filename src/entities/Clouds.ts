@@ -1,5 +1,5 @@
 import * as Phaser from 'phaser';
-import cloudAsset from "../assets/cloud.png";
+import cloudAsset from "../assets/images/cloud.png";
 
 class Clouds extends Phaser.Physics.Arcade.Group {
     constructor(world, scene) {

@@ -1,7 +1,7 @@
 import * as Phaser from 'phaser';
 import FlappyGame from '../scenes/FlappyGame';
-import pipeUpAsset from "../assets/pipe.png";
-import pipeDownAsset from "../assets/pipe-down.png";
+import pipeUpAsset from "../assets/images/pipe.png";
+import pipeDownAsset from "../assets/images/pipe-down.png";
 
 class Pipes extends Phaser.Physics.Arcade.Group {
     scene: FlappyGame;

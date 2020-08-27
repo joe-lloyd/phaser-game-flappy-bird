@@ -1,11 +1,10 @@
 import * as Phaser from "phaser";
-import playerAsset from '../assets/orb.png';
+import playerAsset from '../assets/sprites/ship.png';
 import FlappyGame from '../scenes/FlappyGame';
 
 class Player extends Phaser.Physics.Arcade.Sprite {
   private canJump: boolean;
   private spaceKey: Phaser.Input.Keyboard.Key;
-  private pointer: Phaser.Input.Pointer;
   scene: FlappyGame;
 
   constructor(scene: FlappyGame, x: number, y: number) {
@@ -15,26 +14,40 @@ class Player extends Phaser.Physics.Arcade.Sprite {
   }
 
   static preload(scene) {
-    scene.load.image('player', playerAsset);
+    scene.load.spritesheet('player', playerAsset,{ frameWidth: 32, frameHeight: 32 });
   }
 
   update(pipes, ...args) {
     super.update(...args);
     this.checkJump();
-    this.scene.physics.overlap(this, pipes, () => this.hitPipe())
-    this.setFacing()
+    this.scene.physics.overlap(this, pipes, () => this.hitPipe());
   }
 
   /**
    * init the player
    */
   init() {
+    this.angle = 90;
+    this.setAnimations()
     this.scene.add.existing(this);
     this.scene.physics.add.existing(this);
     this.setCollideWorldBounds(true);
     this.canJump = true;
     this.spaceKey = this.scene.input.keyboard.addKey('SPACE');
-    this.pointer = this.scene.rexGestures.add.tap({});
+  }
+
+  setAnimations() {
+    var config = {
+      key: 'idle',
+      frames: this.scene.anims.generateFrameNumbers('player', {start: 0, end: 7}),
+      frameRate: 4,
+      yoyo: true,
+      repeat: -1
+    };
+    this.scene.anims.create(config);
+    this.anims.load('idle');
+    this.anims.play('idle');
+
   }
 
   /**
@@ -42,7 +55,7 @@ class Player extends Phaser.Physics.Arcade.Sprite {
    * Makes sure a user cant just hold it down to fly up.
    */
   checkJump() {
-    if (this.canJump && (this.spaceKey.isDown || this.pointer.isTapped)) {
+    if (this.canJump && (this.spaceKey.isDown)) {
       this.setVelocityY(-120);
       this.canJump = false;
     } else if (this.spaceKey.isUp) {
@@ -57,14 +70,6 @@ class Player extends Phaser.Physics.Arcade.Sprite {
     this.body.allowGravity = false;
     this.setVelocityY(0)
     this.setImmovable(true);
-  }
-
-  /**
-   * Face more down as you fall and up as you fly up
-   */
-  setFacing() {
-    const angle = this.angle + this.body.velocity.y * 0.01
-    this.angle = Phaser.Math.Clamp(angle, -60, 60);
   }
 }
 

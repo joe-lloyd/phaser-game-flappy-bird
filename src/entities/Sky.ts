@@ -1,5 +1,5 @@
 import * as Phaser from 'phaser';
-import skyAsset from "../assets/sky.png";
+import skyAsset from "../assets/images/sky.png";
 
 class Sky extends Phaser.GameObjects.Image {
     constructor(scene, x, y) {

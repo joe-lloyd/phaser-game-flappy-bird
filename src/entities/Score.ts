@@ -8,8 +8,8 @@ class Score extends Phaser.GameObjects.Text {
       fontFamily: '"Press Start 2P"',
       stroke: 'black',
       color: 'white',
-      strokeThickness: 3,
-      fontSize: '24px'
+      strokeThickness: 2,
+      fontSize: '18px'
     });
     this.score = 0
     this.scene.add.existing(this);
