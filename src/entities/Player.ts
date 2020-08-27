@@ -6,6 +6,7 @@ class Player extends Phaser.Physics.Arcade.Sprite {
   private canJump: boolean;
   private spaceKey: Phaser.Input.Keyboard.Key;
   private pointer: Phaser.Input.Pointer;
+  scene: FlappyGame;
 
   constructor(scene: FlappyGame, x: number, y: number) {
     super(scene, x, y, 'player');

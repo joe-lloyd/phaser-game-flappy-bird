@@ -4,6 +4,8 @@ import pipeUpAsset from "../assets/pipe.png";
 import pipeDownAsset from "../assets/pipe-down.png";
 
 class Pipes extends Phaser.Physics.Arcade.Group {
+    scene: FlappyGame;
+
     constructor(world, scene: FlappyGame) {
         super(world, scene);
         this.init()
@@ -38,8 +40,9 @@ class Pipes extends Phaser.Physics.Arcade.Group {
 
 class Pipe extends Phaser.Physics.Arcade.Sprite {
     private readonly pipeType: 'pipe-up' | 'pipe-down';
+    scene: FlappyGame;
 
-    constructor(scene: Phaser.Scene, x: number, y: number, pipeType: 'pipe-up' | 'pipe-down') {
+    constructor(scene: FlappyGame, x: number, y: number, pipeType: 'pipe-up' | 'pipe-down') {
         super(scene, x, y, pipeType);
         this.scene = scene;
         this.pipeType = pipeType;
