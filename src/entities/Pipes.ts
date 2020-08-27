@@ -1,9 +1,10 @@
 import * as Phaser from 'phaser';
+import FlappyGame from '../scenes/FlappyGame';
 import pipeUpAsset from "../assets/pipe.png";
 import pipeDownAsset from "../assets/pipe-down.png";
 
 class Pipes extends Phaser.Physics.Arcade.Group {
-    constructor(world, scene) {
+    constructor(world, scene: FlappyGame) {
         super(world, scene);
         this.init()
     }
@@ -46,8 +47,7 @@ class Pipe extends Phaser.Physics.Arcade.Sprite {
 
     reset() {
         this.body.x = this.scene.scale.width
-        this.scene.score += 0.5;
-        this.scene.scoreText.setText(`SCORE: ${this.scene.score}`)
+        this.scene.score.updateScore(0.5);
         if (this.pipeType === 'pipe-up') {
             this.body.y = Phaser.Math.Between(this.scene.scale.height - this.body.height * 0.4, this.scene.scale.height - this.body.height * 0.9);
         } else {

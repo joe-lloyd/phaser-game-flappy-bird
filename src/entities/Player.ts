@@ -1,13 +1,13 @@
 import * as Phaser from "phaser";
-import { Tap } from 'phaser3-rex-plugins/plugins/gestures.js';
 import playerAsset from '../assets/orb.png';
+import FlappyGame from '../scenes/FlappyGame';
 
 class Player extends Phaser.Physics.Arcade.Sprite {
   private canJump: boolean;
   private spaceKey: Phaser.Input.Keyboard.Key;
   private pointer: Phaser.Input.Pointer;
 
-  constructor(scene: Phaser.Scene, x: number, y: number) {
+  constructor(scene: FlappyGame, x: number, y: number) {
     super(scene, x, y, 'player');
     this.init();
     return this;

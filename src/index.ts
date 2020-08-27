@@ -23,6 +23,4 @@ const config = {
     scene: [FlappyGame]
 };
 
-console.log(process.env.DEBUGMODE);
-
 const game = new Phaser.Game(config);
