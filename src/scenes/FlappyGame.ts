@@ -4,12 +4,14 @@ import Sky from "../entities/Sky";
 import Pipes, { Pipe } from '../entities/Pipes';
 import Player from '../entities/Player';
 import Score from '../entities/Score';
+import Music from '../entities/Music';
 
 class FlappyGame extends Scene {
     private clouds: Clouds;
     private pipes: Pipes;
     private player: Player;
     public score: Score;
+    public music: Phaser.Sound.BaseSound;
 
     constructor(config) {
         super({
@@ -18,6 +20,7 @@ class FlappyGame extends Scene {
     }
 
     preload() {
+        Music.preload(this)
         Sky.preload(this);
         Cloud.preload(this);
         Pipe.preload(this);
@@ -25,6 +28,7 @@ class FlappyGame extends Scene {
     }
 
     create() {
+        new Music(this);
         new Sky(this, 400, 300)
         this.clouds = new Clouds(this.physics.world, this);
         this.pipes = new Pipes(this.physics.world, this);
