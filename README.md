@@ -11,4 +11,4 @@ see the game  https://serene-boyd-bd0034.netlify.app/
 
 - [] add some sound
 - [] add parallax hills
-
+- [] add leader board with firebase
