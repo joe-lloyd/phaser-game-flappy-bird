@@ -12,7 +12,9 @@ class FlappyGame extends Scene {
     public score: Score;
 
     constructor(config) {
-        super(config);
+        super({
+            key: "game"
+        });
     }
 
     preload() {

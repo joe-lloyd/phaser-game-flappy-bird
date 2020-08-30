@@ -1,6 +1,7 @@
 import * as Phaser from 'phaser';
 import GesturesPlugin from 'phaser3-rex-plugins/plugins/gestures-plugin.js';
 import FlappyGame from './scenes/FlappyGame';
+import Splash from "./scenes/Splash";
 
 const config = {
     type: Phaser.AUTO,
@@ -20,7 +21,7 @@ const config = {
             mapping: 'rexGestures'
         }],
     },
-    scene: [FlappyGame]
+    scene: [Splash, FlappyGame]
 };
 
 const game = new Phaser.Game(config);
