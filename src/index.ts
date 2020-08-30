@@ -1,7 +1,7 @@
 import * as Phaser from 'phaser';
 import GesturesPlugin from 'phaser3-rex-plugins/plugins/gestures-plugin.js';
 import FlappyGame from './scenes/FlappyGame';
-import Splash from "./scenes/Splash";
+import Splash from './scenes/Splash';
 
 const config = {
     type: Phaser.AUTO,
@@ -10,7 +10,7 @@ const config = {
     physics: {
         default: 'arcade',
         arcade: {
-            gravity: { y: 200 },
+            gravity: {y: 200},
             debug: process.env.DEBUGMODE === 'true',
         }
     },
