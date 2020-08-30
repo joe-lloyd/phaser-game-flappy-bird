@@ -11,7 +11,7 @@ class FlappyGame extends Scene {
     private pipes: Pipes;
     private player: Player;
     public score: Score;
-    public music: Phaser.Sound.BaseSound;
+    public music: Music;
 
     constructor(config) {
         super({
@@ -28,7 +28,8 @@ class FlappyGame extends Scene {
     }
 
     create() {
-        new Music(this);
+        this.music = new Music(this);
+        this.music.playTrack();
         new Sky(this, 400, 300)
         this.clouds = new Clouds(this.physics.world, this);
         this.pipes = new Pipes(this.physics.world, this);
