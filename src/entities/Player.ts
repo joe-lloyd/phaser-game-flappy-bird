@@ -76,6 +76,7 @@ class Player extends Phaser.Physics.Arcade.Sprite {
   hitPipe() {
     if(!this.isDead) {
       this.crashSound();
+      this.scene.camera.shakeTime();
       const body = this.body as Phaser.Physics.Arcade.Body;
       body.setAllowGravity(false);
       this.setVelocityY(0)

@@ -6,6 +6,7 @@ import Player from '../entities/Player';
 import Score from '../entities/Score';
 import Music from '../entities/Music';
 import MuteButton from '../entities/MuteButton';
+import Camera from '../entities/Camera';
 
 class FlappyGame extends Scene {
     private clouds: Clouds;
@@ -14,6 +15,7 @@ class FlappyGame extends Scene {
     public score: Score;
     public music: Music;
     public muteButton: MuteButton;
+    public camera: Camera;
     public config: { mute: boolean };
 
     constructor(config) {
@@ -33,6 +35,7 @@ class FlappyGame extends Scene {
     create() {
         this.config = { mute: false };
         new Sky(this, 400, 300);
+        this.camera = new Camera(this);
         this.music = new Music(this);
         this.clouds = new Clouds(this.physics.world, this);
         this.pipes = new Pipes(this.physics.world, this);
