@@ -12,7 +12,6 @@ class MuteButton extends Phaser.GameObjects.Text {
         scene.add.existing(this);
         this.setInteractive()
             .on('pointerdown', () => {
-                console.log('clicked');
                 scene.config.mute = !scene.config.mute;
                 this.setText(`MUTE: ${scene.config.mute}`)
             });
