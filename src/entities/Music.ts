@@ -1,7 +1,6 @@
-import * as Phaser from 'phaser';
 import BackgroundMusic from '../assets/sound/main.mp3';
 
-class MusicManager extends Phaser.Sound.BaseSound {
+class MusicManager {
     loopMarker = {
         name: 'loop',
         start: 0,
@@ -18,13 +17,9 @@ class MusicManager extends Phaser.Sound.BaseSound {
     };
 
     constructor(scene) {
-        super(scene, 'music');
-        scene.sound.add('music');
-        scene.add.existing(scene.sound);
-
-        this.addMarker(this.loopMarker);
-        // const play = this.play('loop');
-        // console.log(this);
+        const music  = scene.sound.add('music');
+        music.addMarker(this.loopMarker);
+        music.play('loop');
     }
 
     static preload(scene) {

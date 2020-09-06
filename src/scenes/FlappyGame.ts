@@ -12,7 +12,6 @@ class FlappyGame extends Scene {
     private player: Player;
     public score: Score;
     public music: Music;
-    private musicStart = false;
 
     constructor(config) {
         super({
@@ -35,33 +34,9 @@ class FlappyGame extends Scene {
         this.pipes = new Pipes(this.physics.world, this);
         this.player = new Player(this, 40, this.scale.height / 2);
         this.score = new Score(this, 50, 50, 0)
-
-        const loopMarker = {
-            name: 'loop',
-            start: 0,
-            duration: 14,
-            config: {
-                mute: false,
-                volume: 1,
-                rate: 1,
-                detune: 0,
-                seek: 0,
-                loop: true,
-                delay: 0
-            }
-        };
-
-        // const music  = this.sound.add('music');
-        // music.addMarker(loopMarker);
-        // music.play('loop');
     }
 
     update(time: number, delta: number) {
-        if (!this.musicStart) {
-            this.music.play();
-            this.musicStart = true;
-            console.log(this.music);
-        }
         super.update(time, delta);
         this.clouds.update();
         this.pipes.update(this.player);
