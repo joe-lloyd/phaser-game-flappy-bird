@@ -43,7 +43,7 @@ class Player extends Phaser.Physics.Arcade.Sprite {
   }
 
   setAnimations() {
-    var config = {
+    const config = {
       key: 'idle',
       frames: this.scene.anims.generateFrameNumbers('player', {start: 0, end: 7}),
       frameRate: 4,
@@ -76,7 +76,8 @@ class Player extends Phaser.Physics.Arcade.Sprite {
   hitPipe() {
     if(!this.isDead) {
       this.crashSound();
-      this.body.allowGravity = false;
+      const body = this.body as Phaser.Physics.Arcade.Body;
+      body.setAllowGravity(false);
       this.setVelocityY(0)
       this.setImmovable(true);
       this.isDead = true;
