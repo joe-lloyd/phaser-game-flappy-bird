@@ -1,9 +1,12 @@
 import * as Phaser from "phaser";
 import playerAsset from '../assets/sprites/ship.png';
 import FlappyGame from '../scenes/FlappyGame';
+import HitSound from '../assets/sound/hit.wav';
+import JumpSound from '../assets/sound/jump.wav';
 
 class Player extends Phaser.Physics.Arcade.Sprite {
   private canJump: boolean;
+  private isDead: boolean;
   private spaceKey: Phaser.Input.Keyboard.Key;
   scene: FlappyGame;
 
@@ -15,6 +18,8 @@ class Player extends Phaser.Physics.Arcade.Sprite {
 
   static preload(scene) {
     scene.load.spritesheet('player', playerAsset,{ frameWidth: 32, frameHeight: 32 });
+    scene.load.audio('hit', HitSound);
+    scene.load.audio('jump', JumpSound);
   }
 
   update(pipes, ...args) {
@@ -27,6 +32,7 @@ class Player extends Phaser.Physics.Arcade.Sprite {
    * init the player
    */
   init() {
+    this.isDead = false;
     this.angle = 90;
     this.setAnimations()
     this.scene.add.existing(this);
@@ -58,6 +64,7 @@ class Player extends Phaser.Physics.Arcade.Sprite {
     if (this.canJump && (this.spaceKey.isDown)) {
       this.setVelocityY(-120);
       this.canJump = false;
+      this.jumpSound();
     } else if (this.spaceKey.isUp) {
       this.canJump = true;
     }
@@ -67,9 +74,42 @@ class Player extends Phaser.Physics.Arcade.Sprite {
    * When hitting a pipe turn off any movement
    */
   hitPipe() {
-    this.body.allowGravity = false;
-    this.setVelocityY(0)
-    this.setImmovable(true);
+    if(!this.isDead) {
+      this.crashSound();
+      this.body.allowGravity = false;
+      this.setVelocityY(0)
+      this.setImmovable(true);
+      this.isDead = true;
+    }
+  }
+
+  /**
+   * Apply and play the hit sound
+   */
+  crashSound() {
+    const hit  = this.scene.sound.add('hit');
+    hit.addMarker({
+      name: 'hit-marker',
+      start: 0,
+      duration: 0.2,
+    })
+    hit.play('hit-marker');
+  }
+
+  /**
+   * Apply and play the jump sound
+   */
+  jumpSound() {
+    const jump  = this.scene.sound.add('jump');
+    jump.addMarker({
+      name: 'jump-marker',
+      start: 0,
+      duration: 0.6,
+      config: {
+        volume: 0.2,
+      }
+    })
+    jump.play('jump-marker');
   }
 }
 

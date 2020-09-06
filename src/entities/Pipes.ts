@@ -2,6 +2,7 @@ import * as Phaser from 'phaser';
 import FlappyGame from '../scenes/FlappyGame';
 import pipeUpAsset from "../assets/images/pipe.png";
 import pipeDownAsset from "../assets/images/pipe-down.png";
+import PointSound from "../assets/sound/point.wav";
 
 class Pipes extends Phaser.Physics.Arcade.Group {
     scene: FlappyGame;
@@ -53,6 +54,7 @@ class Pipe extends Phaser.Physics.Arcade.Sprite {
         this.scene.score.updateScore(0.5);
         if (this.pipeType === 'pipe-up') {
             this.body.y = Phaser.Math.Between(this.scene.scale.height - this.body.height * 0.4, this.scene.scale.height - this.body.height * 0.9);
+            this.pointSound();
         } else {
             this.body.y = Phaser.Math.Between(-this.body.height * 0.4, -this.body.height * 0.9);
         }
@@ -61,6 +63,23 @@ class Pipe extends Phaser.Physics.Arcade.Sprite {
     static preload(scene) {
         scene.load.image('pipe-up', pipeUpAsset);
         scene.load.image('pipe-down', pipeDownAsset);
+        scene.load.audio('point', PointSound);
+    }
+
+    /**
+     * Apply and play the jump sound
+     */
+    pointSound() {
+        const point  = this.scene.sound.add('point');
+        point.addMarker({
+            name: 'point-marker',
+            start: 0,
+            duration: 0.6,
+            config: {
+                volume: 0.2,
+            }
+        })
+        point.play('point-marker');
     }
 }
 
