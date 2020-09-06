@@ -5,6 +5,7 @@
     "build": "parcel build index.html"
   },
   "dependencies": {
+    "@types/node": "^14.6.4",
     "phaser": "^3.24.1",
     "phaser3-rex-plugins": "^1.1.25"
   },
