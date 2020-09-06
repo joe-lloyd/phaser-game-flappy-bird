@@ -7,8 +7,8 @@ Parcel.js used to bundle with no config. All made with TypeScript extending phas
 
 see the game  https://serene-boyd-bd0034.netlify.app/
 
-## Still to do
+## To do
 
-- [] add some sound
-- [] add parallax hills
-- [] add leader board with firebase
+- [X] add some sound
+- [ ] add parallax hills
+- [ ] add leader board with firebase
