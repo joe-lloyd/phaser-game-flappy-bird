@@ -1,52 +1,34 @@
 import * as Phaser from 'phaser';
-import BackgroundMusic from '../assets/sound/main.wav';
+import BackgroundMusic from '../assets/sound/main.mp3';
 
-class MusicManager extends Phaser.Sound.BaseSoundManager {
-    private mainTrack: Music;
+class MusicManager extends Phaser.Sound.BaseSound {
+    loopMarker = {
+        name: 'loop',
+        start: 0,
+        duration: 14,
+        config: {
+            mute: false,
+            volume: 1,
+            rate: 1,
+            detune: 0,
+            seek: 0,
+            loop: true,
+            delay: 0
+        }
+    };
 
     constructor(scene) {
-        super(scene.game);
-        this.mainTrack = new Music(this);
-        scene.add.existing(this);
-        return this
-    }
+        super(scene, 'music');
+        scene.sound.add('music');
+        scene.add.existing(scene.sound);
 
-    playTrack() {
-        this.mainTrack.play();
+        this.addMarker(this.loopMarker);
+        // const play = this.play('loop');
+        // console.log(this);
     }
 
     static preload(scene) {
         scene.load.audio('music', BackgroundMusic);
-    }
-}
-
-class Music extends Phaser.Sound.BaseSound {
-    constructor(musicManager) {
-        super(musicManager, 'music');
-        this.init();
-    }
-
-    init() {
-        const soundMarker = {
-            name: 'music-guy',
-            start: 0,
-            duration: 14,
-            config: {
-                mute: false,
-                volume: 1,
-                rate: 1,
-                detune: 0,
-                seek: 0,
-                loop: true,
-                delay: 0
-            }
-        };
-        this.addMarker(soundMarker);
-    }
-
-    play(): boolean {
-        console.log('play the track')
-        return super.play('music-guy');
     }
 }
 
