@@ -27,9 +27,9 @@ class MusicManager {
     }
 
     update() {
-        if (this.scene.config.mute && this.music.isPlaying) {
+        if (this.scene.soundConfig.musicMute && this.music.isPlaying) {
             this.music.pause();
-        } else if (!this.scene.config.mute && this.music.isPaused) {
+        } else if (!this.scene.soundConfig.musicMute && this.music.isPaused) {
             this.music.play('loop');
         }
     }

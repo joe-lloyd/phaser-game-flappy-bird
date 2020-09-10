@@ -22,10 +22,10 @@ class Player extends Phaser.Physics.Arcade.Sprite {
     scene.load.audio('jump', JumpSound);
   }
 
-  update(pipes, ...args) {
+  update(...args) {
     super.update(...args);
     this.checkJump();
-    this.scene.physics.overlap(this, pipes, () => this.hitPipe());
+    this.scene.physics.overlap(this, this.scene.pipes, () => this.hitPipe());
   }
 
   /**

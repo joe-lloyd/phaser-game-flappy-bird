@@ -2,7 +2,7 @@ import * as Phaser from "phaser";
 
 class MuteButton extends Phaser.GameObjects.Text {
     constructor(scene, x, y) {
-        super(scene, x, y, `MUTE: ${scene.config.mute}`, {
+        super(scene, x, y, `Mute Music: ${scene.soundConfig.musicMute}`, {
             fontFamily: '"Press Start 2P"',
             stroke: 'black',
             color: 'white',
@@ -12,8 +12,8 @@ class MuteButton extends Phaser.GameObjects.Text {
         scene.add.existing(this);
         this.setInteractive()
             .on('pointerdown', () => {
-                scene.config.mute = !scene.config.mute;
-                this.setText(`MUTE: ${scene.config.mute}`)
+                scene.soundConfig.musicMute = !scene.soundConfig.musicMute;
+                this.setText(`MUTE: ${scene.soundConfig.musicMute}`)
             });
     }
 

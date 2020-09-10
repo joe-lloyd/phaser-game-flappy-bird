@@ -14,7 +14,7 @@ class Pipes extends Phaser.Physics.Arcade.Group {
 
     init() {
         this.defaults.setAllowGravity = false;
-        this.defaults.setVelocityX = -140;
+        this.defaults.setVelocityX = -(this.scene.scale.width / 5);
         const sectionOfWidth = this.scene.scale.width / 3;
         const pipePositions = [[sectionOfWidth, 0], [sectionOfWidth * 2, 0], [sectionOfWidth * 3, 0]]
         pipePositions.forEach(([x, y]) => {
@@ -29,13 +29,13 @@ class Pipes extends Phaser.Physics.Arcade.Group {
         this.setVelocityX(0);
     }
 
-    update(player) {
+    update() {
         this.children.entries.forEach((pipe: Pipe) => {
             if (pipe.body.position.x < -pipe.width) {
                 pipe.reset();
             }
         })
-        this.scene.physics.overlap(this, player, () => this.hitPlayer())
+        this.scene.physics.overlap(this, this.scene.player, () => this.hitPlayer())
     }
 }
 
@@ -47,16 +47,22 @@ class Pipe extends Phaser.Physics.Arcade.Sprite {
         super(scene, x, y, pipeType);
         this.scene = scene;
         this.pipeType = pipeType;
+
+        if (pipeType === 'pipe-up') {
+            this.setOrigin(0, 0);
+        } else {
+            this.setOrigin(0, 1);
+        }
     }
 
     reset() {
         this.body.x = this.scene.scale.width
         this.scene.score.updateScore(0.5);
         if (this.pipeType === 'pipe-up') {
-            this.body.y = Phaser.Math.Between(this.scene.scale.height - this.body.height * 0.4, this.scene.scale.height - this.body.height * 0.9);
+            this.body.y = Phaser.Math.Between(this.scene.scale.height * 0.4, this.scene.scale.height * 0.3);
             this.pointSound();
         } else {
-            this.body.y = Phaser.Math.Between(-this.body.height * 0.4, -this.body.height * 0.9);
+            this.body.y = Phaser.Math.Between(this.scene.scale.height * 0.6, this.scene.scale.height * 0.7);
         }
     }
 
