@@ -16,10 +16,10 @@ class Pipes extends Phaser.Physics.Arcade.Group {
         this.defaults.setAllowGravity = false;
         this.defaults.setVelocityX = -(this.scene.scale.width / 5);
         const sectionOfWidth = this.scene.scale.width / 3;
-        const pipePositions = [[sectionOfWidth, 0], [sectionOfWidth * 2, 0], [sectionOfWidth * 3, 0]]
-        pipePositions.forEach(([x, y]) => {
-            const pipeDown = new Pipe(this.scene, x, Phaser.Math.Between(0, -100), 'pipe-down');
-            const pipeUp = new Pipe(this.scene, x, Phaser.Math.Between(this.scene.scale.height, this.scene.scale.height + 100), 'pipe-up');
+        const pipePositions = [[sectionOfWidth], [sectionOfWidth * 2], [sectionOfWidth * 3]]
+        pipePositions.forEach(([x]) => {
+            const pipeDown = new Pipe(this.scene, x,'pipe-down');
+            const pipeUp = new Pipe(this.scene, x,'pipe-up');
             this.add(pipeDown, true);
             this.add(pipeUp, true);
         });
@@ -43,26 +43,33 @@ class Pipe extends Phaser.Physics.Arcade.Sprite {
     private readonly pipeType: 'pipe-up' | 'pipe-down';
     scene: FlappyGame;
 
-    constructor(scene: FlappyGame, x: number, y: number, pipeType: 'pipe-up' | 'pipe-down') {
-        super(scene, x, y, pipeType);
+    constructor(scene: FlappyGame, x: number, pipeType: 'pipe-up' | 'pipe-down') {
+        super(scene, x, 0, pipeType);
         this.scene = scene;
         this.pipeType = pipeType;
 
         if (pipeType === 'pipe-up') {
-            this.setOrigin(0, 0);
+            this.setOrigin(0, 1);
+            this.setY(this.randomiseY(this.scene.scale.height))
         } else {
             this.setOrigin(0, 1);
+            this.setY(this.randomiseY(0))
         }
     }
 
+    randomiseY(base) {
+        return  base + Phaser.Math.Between(this.height * 0.9, this.height * 0.2,)
+    }
+
     reset() {
-        this.body.x = this.scene.scale.width
+        const { width: sceneWidth, height: sceneHeight } = this.scene.scale;
+        this.body.x = sceneWidth
         this.scene.score.updateScore(0.5);
         if (this.pipeType === 'pipe-up') {
-            this.body.y = Phaser.Math.Between(this.scene.scale.height * 0.4, this.scene.scale.height * 0.3);
+            this.body.y = sceneHeight - Phaser.Math.Between(this.height, this.height * 0.6);
             this.pointSound();
         } else {
-            this.body.y = Phaser.Math.Between(this.scene.scale.height * 0.6, this.scene.scale.height * 0.7);
+            this.body.y = Phaser.Math.Between(0, - this.height * 0.6);
         }
     }
 
