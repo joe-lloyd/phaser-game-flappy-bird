@@ -10,13 +10,13 @@ import Camera from '../entities/Camera';
 
 class FlappyGame extends Scene {
     private clouds: Clouds;
-    private pipes: Pipes;
-    private player: Player;
+    public pipes: Pipes;
+    public player: Player;
     public score: Score;
     public music: Music;
     public muteButton: MuteButton;
     public camera: Camera;
-    public config: { mute: boolean };
+    public soundConfig: { musicMute: boolean };
 
     constructor(config) {
         super({
@@ -33,8 +33,8 @@ class FlappyGame extends Scene {
     }
 
     create() {
-        this.config = { mute: false };
-        new Sky(this, 400, 300);
+        this.soundConfig = { musicMute: true };
+        new Sky(this);
         this.camera = new Camera(this);
         this.music = new Music(this);
         this.clouds = new Clouds(this.physics.world, this);
@@ -47,8 +47,8 @@ class FlappyGame extends Scene {
     update(time: number, delta: number) {
         super.update(time, delta);
         this.clouds.update();
-        this.pipes.update(this.player);
-        this.player.update(this.pipes);
+        this.pipes.update();
+        this.player.update();
         this.music.update();
     }
 }
