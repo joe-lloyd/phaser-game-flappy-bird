@@ -5,8 +5,8 @@ import HitSound from '../assets/sound/hit.wav';
 import JumpSound from '../assets/sound/jump.wav';
 
 class Player extends Phaser.Physics.Arcade.Sprite {
+  public isDead: boolean;
   private canJump: boolean;
-  private isDead: boolean;
   private spaceKey: Phaser.Input.Keyboard.Key;
   scene: FlappyGame;
 
@@ -77,10 +77,6 @@ class Player extends Phaser.Physics.Arcade.Sprite {
     if(!this.isDead) {
       this.crashSound();
       this.scene.camera.shakeTime();
-      const body = this.body as Phaser.Physics.Arcade.Body;
-      body.setAllowGravity(false);
-      this.setVelocityY(0)
-      this.setImmovable(true);
       this.isDead = true;
     }
   }

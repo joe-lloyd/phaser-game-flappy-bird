@@ -25,17 +25,12 @@ class Pipes extends Phaser.Physics.Arcade.Group {
         });
     }
 
-    hitPlayer() {
-        this.setVelocityX(0);
-    }
-
     update() {
         this.children.entries.forEach((pipe: Pipe) => {
             if (pipe.body.position.x < -pipe.width) {
                 pipe.reset();
             }
         })
-        this.scene.physics.overlap(this, this.scene.player, () => this.hitPlayer())
     }
 }
 

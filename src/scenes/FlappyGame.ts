@@ -50,6 +50,11 @@ class FlappyGame extends Scene {
         this.pipes.update();
         this.player.update();
         this.music.update();
+
+        if (this.player.isDead) {
+            this.scene.pause();
+            this.scene.launch('game-over');
+        }
     }
 }
 
