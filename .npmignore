@@ -1,0 +1,8 @@
+node_modules
+.cache
+.idea
+.env
+*.log
+CODE_OF_CONDUCT.md
+.gitignore
+CONTRIBUTING.md
