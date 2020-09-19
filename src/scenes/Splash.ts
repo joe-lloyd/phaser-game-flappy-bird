@@ -12,10 +12,11 @@ class Splash extends Scene {
     }
 
     create() {
-        this.add.text(100, 100, 'Play Game!', { fill: '#0f0' })
+        this.add.text(this.scale.width / 2, this.scale.height / 2, 'Play Game!', { fill: '#0f0', align: 'center' })
+            .setOrigin(0.5, 0.5)
             .setInteractive()
             .on('pointerdown', () => {
-                this.scene.start('game');
+            this.scene.start('game');
             });
     }
 }
