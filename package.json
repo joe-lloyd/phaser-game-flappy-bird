@@ -1,5 +1,6 @@
 {
   "name": "flappy-bird-phaser",
+  "publishConfig": { "registry": "https://npm.pkg.github.com/" },
   "scripts": {
     "dev": "parcel index.html",
     "build": "parcel build index.html"
