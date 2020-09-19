@@ -1,6 +1,6 @@
 {
   "name": "@joe-lloyd/flappy-bird-phaser",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "repository": "git@github.com:joe-lloyd/phaser-game-flappy-bird.git",
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/"
