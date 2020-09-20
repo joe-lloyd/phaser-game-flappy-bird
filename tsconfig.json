@@ -1,6 +1,10 @@
 {
   "compilerOptions": {
-    "sourceMap": true
+    "module": "CommonJS",
+    "sourceMap": true,
+    "declaration": true,
+    "declarationMap": true,
+    "outDir": "lib"
   },
   "include": [
     "src/**/*"

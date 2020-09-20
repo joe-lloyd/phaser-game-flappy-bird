@@ -3,6 +3,7 @@ node_modules
 .idea
 .env
 *.log
+dist
 CODE_OF_CONDUCT.md
 .gitignore
 CONTRIBUTING.md
