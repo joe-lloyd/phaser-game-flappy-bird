@@ -16,7 +16,7 @@ class Splash extends Scene {
             .setOrigin(0.5, 0.5)
             .setInteractive()
             .on('pointerdown', () => {
-            this.scene.start('game');
+                this.scene.start('game');
             });
     }
 }

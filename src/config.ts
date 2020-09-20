@@ -1,6 +1,6 @@
 import * as Phaser from 'phaser';
-import FlappyGame from './scenes/FlappyGame';
 import Splash from './scenes/Splash';
+import FlappyGame from './scenes/FlappyGame';
 import GameOver from './scenes/GameOver';
 
 const config = {
