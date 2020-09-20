@@ -1,14 +1,16 @@
 {
   "name": "@joe-lloyd/flappy-bird-phaser",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "repository": "git@github.com:joe-lloyd/phaser-game-flappy-bird.git",
+  "main": "lib/index.js",
+  "types": "lib",
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/"
   },
   "scripts": {
     "dev": "parcel index.html",
     "build": "parcel build index.html",
-    "build:package": "parcel build index.ts"
+    "build:package": "parcel build index.ts --out-dir lib"
   },
   "dependencies": {
     "@types/node": "^14.6.4",
