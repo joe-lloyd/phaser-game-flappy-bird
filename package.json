@@ -1,6 +1,6 @@
 {
   "name": "@joe-lloyd/flappy-bird-phaser",
-  "version": "1.1.4",
+  "version": "1.1.5",
   "repository": "git@github.com:joe-lloyd/phaser-game-flappy-bird.git",
   "main": "lib/index.js",
   "types": "lib",
