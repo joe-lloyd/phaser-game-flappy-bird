@@ -4,7 +4,8 @@
     "sourceMap": true,
     "declaration": true,
     "declarationMap": true,
-    "outDir": "lib"
+    "outDir": "lib",
+    "target": "ES2018"
   },
   "include": [
     "src/**/*"
