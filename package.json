@@ -10,7 +10,7 @@
   "scripts": {
     "dev": "parcel index.html",
     "build": "parcel build index.html",
-    "build:package": "parcel build index.ts  --public-url ./lib --out-dir lib"
+    "build:package": "parcel build index.ts --public-url ./node_modules/@joe-lloyd/flappy-bird-phaser/lib --out-dir lib"
   },
   "dependencies": {
     "@types/node": "^14.6.4",
