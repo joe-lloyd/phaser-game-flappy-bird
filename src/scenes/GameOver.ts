@@ -3,7 +3,7 @@ import {Scene} from 'phaser';
 class GameOver extends Scene {
   constructor(config) {
     super({
-      key: "game-over"
+      key: "GameOver"
     });
   }
 
@@ -16,7 +16,7 @@ class GameOver extends Scene {
       .setOrigin(0.5, 0.5)
       .setInteractive()
       .on('pointerdown', () => {
-        this.scene.start('game');
+        this.scene.start('FlappyGame');
       });
   }
 }

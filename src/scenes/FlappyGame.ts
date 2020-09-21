@@ -20,7 +20,7 @@ class FlappyGame extends Scene {
 
     constructor(config) {
         super({
-            key: "game"
+            key: "FlappyGame"
         });
     }
 
@@ -53,7 +53,7 @@ class FlappyGame extends Scene {
 
         if (this.player.isDead) {
             this.scene.pause();
-            this.scene.launch('game-over');
+            this.scene.launch('GameOver');
         }
     }
 }
