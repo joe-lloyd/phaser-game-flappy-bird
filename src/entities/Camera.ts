@@ -3,7 +3,7 @@ import FlappyGame from "../scenes/FlappyGame";
 class Camera {
     scene: FlappyGame;
 
-    constructor (scene) {
+    constructor (scene: FlappyGame) {
         this.scene = scene;
     }
 

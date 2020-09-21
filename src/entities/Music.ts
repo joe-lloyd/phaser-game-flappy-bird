@@ -34,7 +34,7 @@ class MusicManager {
         }
     }
 
-    static preload(scene) {
+    static preload(scene: FlappyGame) {
         scene.load.audio('music', BackgroundMusic);
     }
 }

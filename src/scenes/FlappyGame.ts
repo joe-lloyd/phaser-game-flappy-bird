@@ -18,7 +18,7 @@ class FlappyGame extends Scene {
     public camera: Camera;
     public soundConfig: { musicMute: boolean };
 
-    constructor(config) {
+    constructor() {
         super({
             key: "FlappyGame"
         });

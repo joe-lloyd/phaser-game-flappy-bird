@@ -1,8 +1,9 @@
 import * as Phaser from 'phaser';
 import cloudAsset from "../assets/images/cloud.png";
+import FlappyGame from '../scenes/FlappyGame';
 
 class Clouds extends Phaser.Physics.Arcade.Group {
-    constructor(world, scene) {
+    constructor(world: Phaser.Physics.Arcade.World, scene: FlappyGame) {
         super(world, scene);
         this.defaults.setAllowGravity = false;
         this.defaults.setVelocityX = -10;
@@ -34,7 +35,7 @@ class Cloud extends Phaser.Physics.Arcade.Sprite {
         return this;
     }
 
-    static preload(scene) {
+    static preload(scene: FlappyGame) {
         scene.load.image('cloud', cloudAsset);
     }
 }

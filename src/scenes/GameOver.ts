@@ -1,7 +1,7 @@
 import {Scene} from 'phaser';
 
 class GameOver extends Scene {
-  constructor(config) {
+  constructor() {
     super({
       key: "GameOver"
     });

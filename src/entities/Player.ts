@@ -16,13 +16,13 @@ class Player extends Phaser.Physics.Arcade.Sprite {
     return this;
   }
 
-  static preload(scene) {
+  static preload(scene: FlappyGame) {
     scene.load.spritesheet('player', playerAsset,{ frameWidth: 32, frameHeight: 32 });
     scene.load.audio('hit', HitSound);
     scene.load.audio('jump', JumpSound);
   }
 
-  update(...args) {
+  update(...args: any[]) {
     super.update(...args);
     this.checkJump();
     this.scene.physics.overlap(this, this.scene.pipes, () => this.hitPipe());

@@ -5,7 +5,7 @@ import FlappyGame from '../scenes/FlappyGame';
 class Sky extends Phaser.GameObjects.Image {
     scene: FlappyGame;
 
-    constructor(scene) {
+    constructor(scene: FlappyGame) {
         super(scene, 0, 0, 'sky');
         this.setOrigin(0, 0)
         this.setDisplaySize(scene.scale.width, scene.scale.height);

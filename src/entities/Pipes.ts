@@ -7,7 +7,7 @@ import PointSound from "../assets/sound/point.wav";
 class Pipes extends Phaser.Physics.Arcade.Group {
     scene: FlappyGame;
 
-    constructor(world, scene: FlappyGame) {
+    constructor(world: Phaser.Physics.Arcade.World, scene: FlappyGame) {
         super(world, scene);
         this.init()
     }
@@ -52,7 +52,7 @@ class Pipe extends Phaser.Physics.Arcade.Sprite {
         }
     }
 
-    randomiseY(base) {
+    randomiseY(base: number) {
         return  base + Phaser.Math.Between(this.height * 0.9, this.height * 0.2,)
     }
 
@@ -68,7 +68,7 @@ class Pipe extends Phaser.Physics.Arcade.Sprite {
         }
     }
 
-    static preload(scene) {
+    static preload(scene: FlappyGame) {
         scene.load.image('pipe-up', pipeUpAsset);
         scene.load.image('pipe-down', pipeDownAsset);
         scene.load.audio('point', PointSound);

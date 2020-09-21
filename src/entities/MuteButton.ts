@@ -1,7 +1,8 @@
 import * as Phaser from "phaser";
+import FlappyGame from '../scenes/FlappyGame';
 
 class MuteButton extends Phaser.GameObjects.Text {
-    constructor(scene, x, y) {
+    constructor(scene: FlappyGame, x: number, y: number) {
         super(scene, x, y, `Mute Music: ${scene.soundConfig.musicMute}`, {
             fontFamily: '"Press Start 2P"',
             stroke: 'black',
@@ -15,10 +16,6 @@ class MuteButton extends Phaser.GameObjects.Text {
                 scene.soundConfig.musicMute = !scene.soundConfig.musicMute;
                 this.setText(`MUTE: ${scene.soundConfig.musicMute}`)
             });
-    }
-
-    update(...args) {
-        super.update(...args);
     }
 }
 

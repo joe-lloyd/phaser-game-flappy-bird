@@ -1,7 +1,7 @@
 import {Scene} from 'phaser';
 
 class Splash extends Scene {
-    constructor(config) {
+    constructor() {
         super({
             key: "Splash"
         });
