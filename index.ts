@@ -1,18 +1,6 @@
-import GameConfig from './src/config';
-import FlappyGame from './src/scenes/FlappyGame';
-import Splash from './src/scenes/Splash';
-import GameOver from './src/scenes/GameOver';
+import initGame from './src/config';
 
 /**
- * export default config for the game
+ * export function to init game
  */
-export default GameConfig;
-
-/**
- * export scenes to build your own game
- */
-export {
-    FlappyGame,
-    Splash,
-    GameOver,
-};
+export default initGame;
